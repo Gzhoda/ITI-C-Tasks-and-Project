@@ -6,7 +6,7 @@
 #include <time.h>
 
 
-void Cust_actions(u16 counter, account* Total_acc){
+u8 Cust_actions(u16 counter, account* Total_acc){
  printf("If You wish to do a transaction press 1\n");
     printf("To change Account Password press 2\n");
     printf("To withdraw press 3\n");
@@ -53,7 +53,7 @@ void Cust_actions(u16 counter, account* Total_acc){
         
         fflush(stdin);
         scanf("%[^\n]%*c",Total_acc[counter].pass);
-
+        printf("You have changed your password");
         break;
         case 3:
         printf("Enter the amount of cash you wish to withdraw\n");
@@ -79,4 +79,6 @@ void Cust_actions(u16 counter, account* Total_acc){
         default:
         printf("You entered a wrong Input");
         break;
-    }}
+    }
+    return check;
+    }

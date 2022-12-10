@@ -9,6 +9,7 @@
 
 
 void Create_acc(account* Total_acc, u32 counter){
+    u8 flag_ID=0;
     printf("Enter the Data you need: \n");
     while(1){
     printf("Full Name:    ");
@@ -41,31 +42,62 @@ void Create_acc(account* Total_acc, u32 counter){
     printf("Age:    ");
     scanf("%d",&Total_acc[counter].age);
     age_flag=1;
-    if(Total_acc[counter].age<0 &&Total_acc[counter].age>100)
+    if(Total_acc[counter].age<0 || Total_acc[counter].age>100)
     {printf("Invalid Input \n");
     age_flag=0;
     }
     }
 
     fflush(stdout);
+
+    for(int i =0 ;i<15;i++){
+        Total_acc[counter].National_ID[i]='~';
+    }
+    do{
     printf("National ID:    ");
     fflush(stdin);
     scanf("%[^\n]%*c",Total_acc[counter].National_ID);
+    for(int i =0 ;i<14;i++){
+        if(Total_acc[counter].National_ID[i]=='~'||(Total_acc[counter].National_ID[i]<48 && Total_acc[counter].National_ID[i]>57)){
+            flag_ID=0;
+        }
+        else{flag_ID=1;}
+    }
+    if(flag_ID==0)printf("You have entered a wrong ID");
+    }while(flag_ID==0);
+
+//guardian ID if < 21
+
     if(Total_acc[counter].age<21){
+        for(int i =0 ;i<15;i++){
+        Total_acc[counter].Gurdain_ID[i]='~';
+    }
+    flag_ID=0;
+    do{
     fflush(stdout);
     printf("Guardian National ID:    ");
     fflush(stdin);
     scanf("%[^\n]%*c",Total_acc[counter].Gurdain_ID);
+
+    for(int i =0 ;i<14;i++){
+    if(Total_acc[counter].Gurdain_ID[i]=='~'||(Total_acc[counter].Gurdain_ID[i]<48 && Total_acc[counter].Gurdain_ID[i]>57)){
+            flag_ID=0;
+        }
+        else{flag_ID=1;}
     }
+     if(flag_ID==0)printf("You have entered a wrong ID");
+    }while(flag_ID==0);
+    }
+
     fflush(stdout);
     printf("Balance:    ");
     fflush(stdin);
     scanf("%d",&Total_acc[counter].Balance);
-    //printf("Full Name:    ");
-    //printf("%s",Total_acc[counter].Full_name);
+
+    // The accounts get incremented with counter from 1000000000
     Total_acc[counter].Acc_Status=1;
     Total_acc[counter].Bank_acc_ID = 1000000000 + counter;
-
+    
 
     // Password
      int i = 0;

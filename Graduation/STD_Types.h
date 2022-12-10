@@ -18,11 +18,11 @@ typedef struct Accout
 {
    u8 Full_name [SIZE];
    u8 Full_Address[70];
-   u8 National_ID [14];
+   u8 National_ID [15];
    u8 age;
    u32 Bank_acc_ID;
    u8 Gurdian[SIZE];
-   u8 Gurdain_ID[14];
+   u8 Gurdain_ID[15];
    u8 Acc_Status;
    u32 Balance;
    u8 pass[30];
