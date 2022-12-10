@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "STD_Types.h"
+#include "Admin.h"
 #include <string.h>
 #include <math.h>
 #include <time.h>
@@ -135,6 +136,7 @@ void Create_acc(account* Total_acc, u32 counter){
     }
     
 printf("Your generated Account password is : %s\n",Total_acc[counter].pass);
+printf("Your generated Account ID is : %d\n",Total_acc[counter].Bank_acc_ID);
 }
 
 void Exist_acc(u16 counter, account* Total_acc){
@@ -157,7 +159,7 @@ void Exist_acc(u16 counter, account* Total_acc){
         printf("Enter The second ID You wish to do the transaction with\n");
         scanf("%d",&ID);
         while(1){
-        for (int i=0;i<SIZE;i++){
+        for (u16 i=0;i<SIZE;i++){
             if(ID==Total_acc[i].Bank_acc_ID && Total_acc[i].Acc_Status==1)
             {
                 counter1=i;

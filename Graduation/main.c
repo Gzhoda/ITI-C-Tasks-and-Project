@@ -2,15 +2,12 @@
 #include <stdlib.h>
 #include "STD_Types.h"
 #include <string.h>
-#include <math.h>
-#include <time.h>
 #include "Admin.h"
 #include "Client.h"
 
 
-
-
-
+account arr[SIZE];
+ // The accounts get incremented with counter from 1000000000
 u8 Curr_user[SIZE]="Ahmedon";
 u8 Curr_pass[SIZE]="RTX3060";
 
@@ -19,7 +16,7 @@ u8 Curr_pass[SIZE]="RTX3060";
 
 
 void main(){
-    account arr[SIZE];
+
     account* vac[SIZE];
     u8 username[SIZE];
     u8 sml =1;
@@ -42,7 +39,7 @@ while(1){
     check=0;
     scanf("%d",&check);
     if (check == 1){
-        
+        while(1){
         //check username and password
         printf("Enter Your Username: ");
         fflush(stdin);
@@ -53,15 +50,13 @@ while(1){
         flagU = strcmp(username,Curr_user);
         if(flagU==1){
             printf("The username is Wrong\n");
-            break;
         }
         u8 flagP = strcmp(pass,Curr_pass);
         if(flagP==1){
             printf("The Password is Wrong\n");
-            break;
         }
-        
-
+        else{break;}
+        }
 
         // The Admin Window Enterance
 
@@ -89,8 +84,9 @@ while(1){
                 printf("Enter the Bank ID of the Existing customer \n");
                 
                 scanf("%d",&ID);
-                scanf("%d",&ID2);
-                for(u8 i = 0;i<SIZE;i++){
+                printf("You have entered %d\n\n",ID);
+                //scanf("%d",&ID2);
+                for(u16 i = 0;i<SIZE;i++){
                     if(ID==arr[i].Bank_acc_ID && arr->Acc_Status==1){
 
                         Exist_acc(i, arr);
@@ -136,7 +132,7 @@ while(1){
         if(flagp == 1){
             printf("Invalid Password\n");
         }
-
+        if(ret==1)break;
         }
         }
         else if(check ==0){          //leave program

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "STD_Types.h"
+#include "Client.h"
 #include <string.h>
 #include <math.h>
 #include <time.h>
@@ -18,13 +19,14 @@ u8 Cust_actions(u16 counter, account* Total_acc){
     u32 BalanceW;
     u8 state[15];
     u32 BalanceD;
+    u8 flag_L =0;
     scanf("%d",&check);
     switch(check){
         case 1:
         printf("Enter The second ID You wish to do the transaction with\n");
         scanf("%d",&ID);
         while(1){
-        for (int i=0;i<SIZE;i++){
+        for (u16 i=0;i<SIZE;i++){
             if(ID==Total_acc[i].Bank_acc_ID && Total_acc[i].Acc_Status==1)
             {
                 counter1=i;
@@ -33,7 +35,7 @@ u8 Cust_actions(u16 counter, account* Total_acc){
             }
             flag=1;
         }
-        if(flag!=0)
+        if(flag==1)
         break;
             printf("You have entered a wrong ID or not an exciting one or the account is not an active one\n");
         }
@@ -69,16 +71,17 @@ u8 Cust_actions(u16 counter, account* Total_acc){
         break;
         case 4:
         
-        printf("Enter the amount of cash you wish to withdraw\n");
+        printf("Enter the amount of cash you wish to Deposit\n");
         scanf("%d",&BalanceD);
         Total_acc[counter].Balance+=BalanceW;
         printf("Transaction Successful\n");
         break;
         case 0:
+        flag_L =1;
         break;
         default:
         printf("You entered a wrong Input");
         break;
     }
-    return check;
+    return flag_L;
     }
