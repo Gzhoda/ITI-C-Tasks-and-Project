@@ -87,7 +87,7 @@ while(1){
                 printf("You have entered %d\n\n",ID);
                 //scanf("%d",&ID2);
                 for(u16 i = 0;i<SIZE;i++){
-                    if(ID==arr[i].Bank_acc_ID && arr->Acc_Status==1){
+                    if(ID==arr[i].Bank_acc_ID && arr[i].Acc_Status==1){
 
                         Exist_acc(i, arr);
                         flag=0;

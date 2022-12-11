@@ -35,7 +35,7 @@ u8 Cust_actions(u16 counter, account* Total_acc){
             }
             flag=1;
         }
-        if(flag==1)
+        if(flag==0)
         break;
             printf("You have entered a wrong ID or not an exciting one or the account is not an active one\n");
         }
